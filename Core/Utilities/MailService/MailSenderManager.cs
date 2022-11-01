@@ -2,15 +2,15 @@
 using System.Net;
 using System.Text;
 
-namespace Business.Services.MailService
+namespace Core.Utilities.MailService
 {
-    public class MailSenderManager : IMailSenderService
+    public static class MailSenderManager
     {
-        public bool SendMail(EmailMessage emailMessage)
+        public static bool SendMail(EmailMessage emailMessage)
         {
             var mail = new MailMessage()
             {
-                From = new MailAddress(emailMessage.SenderMail)
+                From = new MailAddress("mail@")
             };
             //foreach (var contacts in emailMessage.Contacts)
             //{
@@ -26,7 +26,7 @@ namespace Business.Services.MailService
             var smtpClient = new SmtpClient("smtp.outlook.com", 587)
             {
                 EnableSsl = true,
-                Credentials = new NetworkCredential(emailMessage.SenderMail, emailMessage.Password)
+                Credentials = new NetworkCredential("mail", "password")
             };
             smtpClient.Send(mail);
             return true;

@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Chaching.Redis.Abstract;
+using Core.Utilities.RabitMQ;
 using Core.Utilities.Result;
 using DataAccess.Abstarct;
 using Entities.Concrete;
