@@ -17,6 +17,11 @@ builder.Services.AddControllers();
 builder.Services.AddSingleton<IProductDal, EfProductDal>();
 builder.Services.AddSingleton<IProductService, ProductManager>();
 builder.Services.AddSingleton<ICacheManager,RedisCacheService>();
+builder.Services.AddSingleton<IOrderDal, EfOrderDal>();
+builder.Services.AddSingleton<IOrderDetailDal, EfOrderDetailDal>();
+builder.Services.AddSingleton<IOrderService, OrderManager>();
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 

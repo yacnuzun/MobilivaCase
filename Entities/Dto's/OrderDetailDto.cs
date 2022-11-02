@@ -1,6 +1,6 @@
 ﻿using Core.Entities.Dto_s;
 
-namespace Entities.Concrete
+namespace Entities.Dto_s
 {
     public class OrderDetailDto : IDto
     {

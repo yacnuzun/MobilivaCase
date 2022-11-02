@@ -13,8 +13,8 @@ namespace Core.DataAccess
     {
         List<T> GetAll(Expression<Func<T, bool>> filter = null);
         T Get(Expression<Func<T, bool>> filter);
-        void Add(T entity);
-        void Update(T entity);
+        bool Add(T entity);
+        bool Update(T entity);
         bool Delete(T entity);
     }
 }

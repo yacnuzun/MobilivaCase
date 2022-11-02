@@ -13,13 +13,14 @@ namespace Core.DataAccess.EntityFramework
         where TEntity : class, IEntity, new()
         where Tcontext : DbContext, new()
     {
-        public void Add(TEntity entity)
+        public bool Add(TEntity entity)
         {
             using (Tcontext context = new Tcontext())
             {
                 var entityAdded = context.Entry(entity);
                 entityAdded.State = EntityState.Added;
                 context.SaveChanges();
+                return true;
             }
         }
 
@@ -59,7 +60,7 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
-        public void Update(TEntity entity)
+        public bool Update(TEntity entity)
         {
 
             using (Tcontext context = new Tcontext())
@@ -67,6 +68,7 @@ namespace Core.DataAccess.EntityFramework
                 var entityAdded = context.Entry(entity);
                 entityAdded.State = EntityState.Modified;
                 context.SaveChanges();
+                return true;
             }
 
         }

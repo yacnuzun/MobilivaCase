@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Abstract;
+using Entities.Dto_s;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
@@ -6,10 +8,21 @@ namespace WebAPI.Controllers
     [Route("[controller]")]
     public class OrdersController : ControllerBase
     {
-        [HttpGet("a")]
-        public IActionResult CreateOrder()
+        IOrderService _orderService;
+
+        public OrdersController(IOrderService orderService)
         {
-            return null;
+            _orderService = orderService;
+        }
+
+        [HttpPost("createOrder")]
+        public IActionResult CreateOrder(CreateOrderRequestDto createOrder)
+        {
+            var result = _orderService.CreateOrder(createOrder);
+            if (result.ErrorCode == (int)StatusCodes.Status200OK)
+                return Ok(result);
+            else
+                return BadRequest();
         }
     }
 }
