@@ -27,9 +27,13 @@ namespace WebAPI.Controllers
                 return BadRequest();
         }
         [HttpGet("c")]
-        public IActionResult GetProducts(Product product)
+        public IActionResult GetProducts(string? category)
         {
-            return null;
+            var result=_productService.GetProducts(category);
+            if (result.ErrorCode == (int)StatusCodes.Status200OK)
+                return Ok(result);
+            else
+                return BadRequest();
         }
     }
 }

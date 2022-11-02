@@ -10,8 +10,10 @@ namespace Entities.Concrete
         public string CustomerGSM { get; set; }
         public List<ProductDetail> ProductDetail { get; set; }
     }
-
-    public class ProductDetail
+    public class ProductDetail : IDto
     {
+        public int ProductId { get; set; }
+        public int UnitPrice { get; set; }
+        public int Amount { get; set; }
     }
 }

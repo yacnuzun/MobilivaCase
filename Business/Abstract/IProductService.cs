@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Result;
 using Entities.Concrete;
+using Entities.Dto_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Business.Abstract
     {
         IApiResponse<List<Product>> GetAll();
         IApiResponse<Product> GetById(int id);
-        IApiResponse<List<Product>> GetProduct(Product product);
+        IApiResponse<List<ProductDto>> GetProducts(string? category);
 
         IApiResponse<Product> Add(Product product);
         IApiResponse<Product> Update(Product product);
