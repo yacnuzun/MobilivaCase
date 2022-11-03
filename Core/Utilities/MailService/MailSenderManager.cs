@@ -10,7 +10,7 @@ namespace Core.Utilities.MailService
         {
             var mail = new MailMessage()
             {
-                From = new MailAddress("mail@")
+                From = new MailAddress("yalcin.uzun96@outlook.com")
             };
             //foreach (var contacts in emailMessage.Contacts)
             //{
@@ -26,7 +26,7 @@ namespace Core.Utilities.MailService
             var smtpClient = new SmtpClient("smtp.outlook.com", 587)
             {
                 EnableSsl = true,
-                Credentials = new NetworkCredential("mail", "password")
+                Credentials = new NetworkCredential("yalcin.uzun96@outlook.com", "asdfgh_22")
             };
             smtpClient.Send(mail);
             return true;

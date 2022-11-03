@@ -23,7 +23,20 @@ namespace Business.Concrete
         {
             var result=ConverttoOrderDetail(createOrder);
             OrderDetailAdd(result);
+            var emailMessage=ConvertMail(createOrder);
+            SendMail(emailMessage);
             return new ApiResponse<CreateOrderRequestDto>(Statuses.Success, "", 0,createOrder);
+        }
+
+        private EmailMessage ConvertMail(CreateOrderRequestDto createOrderRequest)
+        {
+            EmailMessage email = new EmailMessage();
+            email.SenderMail = "yalcin.uzun96@outlook.com";
+            email.Subject = "Sipraiş Detayı";
+            email.Body = "Siarişiniz Alınmıştır.";
+            email.Contacts = createOrderRequest.CustomerEmail;
+            email.Password = "asdfgh_22";
+            return email;
         }
 
         private Order OrderAdd(Order order)
