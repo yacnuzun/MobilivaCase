@@ -39,11 +39,9 @@ namespace Business.Concrete
         private EmailMessage ConvertMail(CreateOrderRequestDto createOrderRequest)
         {
             EmailMessage email = new EmailMessage();
-            email.SenderMail = "yalcin.uzun96@outlook.com";
-            email.Subject = "Sipraiş Detayı";
-            email.Body = "Siarişiniz Alınmıştır.";
+            email.Subject = "Sipariş Detayı";
+            email.Body = "Siparişiniz Alınmıştır.";
             email.Contacts = createOrderRequest.CustomerEmail;
-            email.Password = "asdfgh_22";
             return email;
         }
 
