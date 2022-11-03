@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
             if (result.ErrorCode == (int)StatusCodes.Status200OK)
                 return Ok(result);
             else
-                return BadRequest();
+                return BadRequest(result);
         }
     }
 }

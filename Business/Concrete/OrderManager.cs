@@ -19,6 +19,14 @@ namespace Business.Concrete
         IOrderDal _orderDal;
         IProductDal _productDal;
         IOrderDetailDal _detailDal;
+
+        public OrderManager(IOrderDal orderDal, IProductDal productDal, IOrderDetailDal detailDal)
+        {
+            _orderDal = orderDal;
+            _productDal = productDal;
+            _detailDal = detailDal;
+        }
+
         public IApiResponse<CreateOrderRequestDto> CreateOrder(CreateOrderRequestDto createOrder)
         {
             var result=ConverttoOrderDetail(createOrder);
@@ -57,16 +65,10 @@ namespace Business.Concrete
             }
             
         }
-        private bool SendMail(EmailMessage email)
-        {
-            var result= MailSenderManager.SendMail(email);
-            if (result == true)
-            {
+        private void SendMail(EmailMessage email)
+        {            
                 Rabbit.SendQue(email);
-                return true;
-            }
-            else
-                return false;
+
         }
         
         private Order ConverttoOrder(CreateOrderRequestDto createOrder)
