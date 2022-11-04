@@ -17,16 +17,16 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
 
-        [HttpGet("b")]
-        public IActionResult GetAll()
-        {
-            var result= _productService.GetAll();
-            if (result.ErrorCode==(int)StatusCodes.Status200OK)
-                return Ok(result);
-            else
-                return BadRequest();
-        }
-        [HttpGet("c")]
+        //[HttpGet("b")]
+        //public IActionResult GetAll()
+        //{
+        //    var result= _productService.GetAll();
+        //    if (result.ErrorCode==(int)StatusCodes.Status200OK)
+        //        return Ok(result);
+        //    else
+        //        return BadRequest();
+        //}
+        [HttpGet("getproducts")]
         public IActionResult GetProducts(string? category)
         {
             var result=_productService.GetProducts(category);
